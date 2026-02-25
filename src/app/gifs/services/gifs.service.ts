@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import type { Gif, GiphyResponse } from '../interfaces';
 import { GifMapper } from '../mapper/gif.mapper';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,18 @@ export class GifsService {
 
 
     });
+  }
+  searchGifs(query: string) {
+    return this.http.get<GiphyResponse>(`${this.BASE_URL}/gifs/search`, {
+      params: {
+        api_key: this.API_KEY,
+        q: query,
+        limit: 20,
+      },
+    })
+      .pipe(
+        map(({ data }) => GifMapper.mapGiphyItemsToGifs(data))
+      );
   }
 
 }
