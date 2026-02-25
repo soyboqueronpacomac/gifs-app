@@ -1,5 +1,5 @@
 <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4">
-  @for (imageUrl of imageUrls(); track $index) {
-    <gif-item [imageUrl]="imageUrl" />
+  @for (gif of gifs(); track gif.id) {
+    <gif-item [gif]="gif" />
   }
 </section>

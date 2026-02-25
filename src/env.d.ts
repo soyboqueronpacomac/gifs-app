@@ -6,6 +6,8 @@ declare interface Env {
   readonly NGX_COMPANY_NAME: string;
   readonly NGX_COMPANY_NAME2: string;
   readonly NGX_COMPANY_SLOGAN: string;
+  readonly NGX_GIPHY_API_KEY: string;
+  readonly NGX_GIPHY_BASE_URL: string;
   [key: string]: any;
 }
 

@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { GifList } from "../../components/sidebar/gif/gif-list/gif-list";
-import { imageUrls } from '../../interfaces/imageUrls.interface';
+
+import { GifsService } from '../../services/gifs.service';
 
 @Component({
   selector: 'app-trending-page',
@@ -8,5 +9,6 @@ import { imageUrls } from '../../interfaces/imageUrls.interface';
   templateUrl: './trending-page.html',
 })
 export default class TrendingPage {
-  imageUrls = signal<string[]>(imageUrls)
+
+  gifsService = inject(GifsService);
 }
